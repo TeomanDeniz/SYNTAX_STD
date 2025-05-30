@@ -292,4 +292,53 @@ const int	g_var_wow = 42;
 
 #### {CODE ITSELF}
 
+While creating a function on C, for implement my function to both K&R and ANSI C syntax, I am using `KNR_STYLE` from **[KNR_STYLE.h](https://github.com/TeomanDeniz/LIBCMT/blob/main/ENVIRONMENTS/KNR_STYLE.h)**.
+
+Note: On K&R version, please avoid using `const`, `restrict`, and other C89/C90 above syntaxes on the variables.
+
+```c
+#ifndef KNR_STYLE /* STANDARD C */
+void
+	FUNCTION(void)
+#else /* K&R */
+void
+	FUNCTION()
+#endif /* !KNR_STYLE */
+{
+...
+}
+
+#ifndef KNR_STYLE /* STANDARD C */
+void
+	FUNCTION2(int VAR)
+#else /* K&R */
+void
+	FUNCTION2(VAR)
+	int	VAR;
+#endif /* !KNR_STYLE */
+{
+...
+}
+```
+
+In scope, while creating a variable; Never create your variable on the middle of the scope unless it's a `const`.
+
+And when created the variable, do not give it a value right after creation. (If it's not a `const` or `static` variable).
+
+```c
+{
+	int				test;
+	unsigned int	test;
+
+	test = 42;
+	...
+}
+
+{
+	static int	test = 0;
+
+	...
+}
+```
+
 Coming soon...
