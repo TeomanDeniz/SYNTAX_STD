@@ -85,11 +85,11 @@ The order of syntax is as follows:
 ```ini
 [MISRA RULE SETS (PUSH)]
 
-[C++ (PUSH)]
-
 [MVS LINKER]
 
 [INCLUDES]
+
+[C++ (PUSH)]
 
 [MACROS]
 
