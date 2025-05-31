@@ -122,8 +122,8 @@ Syntax:
 /* *********************** [v] TI CGT CCS (PUSH) [v] ************************ */
 #ifdef __TI_COMPILER_VERSION__
 #	pragma diag_push /* TI CGT CCS COMPILER DIRECTIVES */
-#	pragma CHECK_MISRA("-5.4") /* TAG NAMES SHALL BE A UNIQUE IDENTIFIER */
-#	pragma CHECK_MISRA("-19.3") /*
+#	pragma CHECK_MISRA("5.4") /* TAG NAMES SHALL BE A UNIQUE IDENTIFIER */
+#	pragma CHECK_MISRA("19.3") /*
 #		THE #INCLUDE DIRECTIVE SHALL BE FOLLOWED BY EITHER A <FILENAME> OR
 #		"FILENAME" SEQUENCE
 #	*/
