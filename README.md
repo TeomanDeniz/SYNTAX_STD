@@ -1,5 +1,9 @@
 # Syntax Standards
 
+First of all, I should mention that I always use **SCREAMING_SNAKE_CASE** to naming variable/function/object while coding in every programming language. However, I will not use that in my examples here because it is a personal habit.
+
+Habit: Readability on Low-Res Displays. UPPER_CASE was more legible on primitive screens and printouts.
+
 Language list:
 
 [C Language](#C-Language)
@@ -8,13 +12,15 @@ Language list:
 
 I am always using my **[LIBCMT](https://github.com/TeomanDeniz/LIBCMT)** library while creating projects with using C Language.
 
+Note: Check pre-defined macros if necessary in [here](https://sourceforge.net/p/predef/wiki/Compilers/).
+
 The entire file must be written and could be fit within 80 characters in a single line (TABs counted as 4 characters).
 
 If the code overflows 80 characters, then please use "\\" for shred the code.
 
 ### For macros and pre-processing commands
 
-Always using TABs between `#` and `command` inside macro scopes.
+Always using TABs between `#` and `command` inside macro blocks.
 
 And at the macros' `#endif`s: Always writing the statement itself in a comment line to 
 
@@ -341,4 +347,113 @@ And when created the variable, do not give it a value right after creation. (If 
 }
 ```
 
-Coming soon...
+For variables that's only going to be used on a small area of the code, I am going to create a block to handle that local variable at it's place.
+
+This is actually improves the readability and **compiling** performance.
+```c
+{
+	int	test = 0;
+
+	{
+		register int	a_local_variable;
+
+		a_local_variable = 42;
+		...
+	}
+
+	...
+}
+```
+
+Awlays create an extra space between blocks. I mean, I am putting spaces on outside of the blocks.
+
+Even if it's an `if`, `while`, and `for` statement without blocks, you **must** put spaces around them!
+
+```c
+A;
+
+{
+	B;
+	C;
+}
+
+D;
+```
+
+```c
+A
+
+if ()
+	B;
+
+C
+```
+
+Example:
+```c
+{
+	int	a;
+
+	a = 1;
+
+	if (a)
+	{
+		if (a)
+		{
+			if (!a)
+			{
+				...
+			}
+			else
+			{
+				...
+			}
+		}
+
+		a = 0;
+	}
+
+	if (a)
+		a = 0;
+
+	test(a);
+}
+```
+
+I am generally avoiding using keywords in my codes like: `for`, `do->while`, `goto`, and `?: (ternary operator)` to make readibility more clear.
+
+For `switch` & `case`, `return`, `break`, and `continue` syntaxes, I am using them in this style: (Note that I am also trying to avoid using `continue` keyword)
+
+```c
+switch (VAR)
+{
+	case (0):
+	{
+		...
+	}
+	break ;
+
+	case (1):
+	{
+		...
+	}
+	break ;
+
+	default:
+	{
+		...
+	}
+}
+
+while (1)
+{
+	break ;
+}
+
+while (1)
+{
+	continue ;
+}
+
+return (VAR);
+```
