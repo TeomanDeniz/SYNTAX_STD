@@ -149,9 +149,9 @@ So make the user use the C features, we are setting an extern to achieve that.
 
 ```c
 /* *************************** [v] C++ (PUSH) [v] *************************** */
-#	ifdef __cplusplus /* C++ */
+#ifdef __cplusplus /* C++ */
 extern "C" {
-#	endif /* __cplusplus */
+#endif /* __cplusplus */
 /* *************************** [^] C++ (PUSH) [^] *************************** */
 ```
 
@@ -159,9 +159,9 @@ extern "C" {
 
 ```c
 /* *************************** [v] C++ (POP) [v] **************************** */
-#	ifdef __cplusplus /* C++ */
+#ifdef __cplusplus /* C++ */
 }
-#	endif /* __cplusplus */
+#endif /* __cplusplus */
 /* *************************** [^] C++ (POP) [^] **************************** */
 ```
 
@@ -173,11 +173,11 @@ On IBM mainframe systems (e.g. z/OS), the MVS Linker imposes a strict limitation
 /* *************************** [v] MVS LINKER [v] *************************** */
 /* **** MVS LINKER DOES NOT SUPPORT EXTERNAL NAMES LARGER THAN 8 BYTES!! **** */
 // NOTE: TARGETING IBM MAINFRAME SYSTEMS (Z/OS)
-#	ifdef __MVS__
-#		pragma map(LONG_FUNCTION_NAME, "SHORTNM1")
-#		pragma map(LONG_FUNCTION_NAME_2, "SHORTNM2")
+#ifdef __MVS__
+#	pragma map(LONG_FUNCTION_NAME, "SHORTNM1")
+#	pragma map(LONG_FUNCTION_NAME_2, "SHORTNM2")
 ...
-#	endif /* __MVS__ */
+#endif /* __MVS__ */
 /* *************************** [^] MVS LINKER [^] *************************** */
 ```
 
@@ -230,7 +230,7 @@ Macros are classic macros. Nothing specific about them.
 
 #### [PROTOTYPES]
 
-```
+```c
 /* *************************** [v] PROTOTYPES [v] *************************** */
 extern int			g_variable;
 extern void			test_func(void);
